@@ -14,6 +14,7 @@ class _DataTypeState extends State<DataType> {
     _boolType();
     _listType();
     _mapType();
+    _tips();
     return Container(
       child: Text('常用数据类型，请查看控制台输出'),
     );
@@ -35,8 +36,7 @@ class _DataTypeState extends State<DataType> {
 
   /// 字符串
   _stringType() {
-    String str1 = '字符串',
-        str2 = "双引号"; // 字符串的定义
+    String str1 = '字符串', str2 = "双引号"; // 字符串的定义
     String str3 = 'str:$str1 str:$str2'; // 字符串拼接
     String str4 = 'str1:' + str1 + 'str2:' + str2; // 用 + 号进行字符串拼接
     String str5 = '常用数据类型，常用请看控,制台输出';
@@ -54,8 +54,7 @@ class _DataTypeState extends State<DataType> {
 
   /// 布尔类型，Dart是 强 bool类型检查， 只有bool 类型的值是true 才被认为是true
   _boolType() {
-    bool success = true,
-        fail = false;
+    bool success = true, fail = false;
     print(success);
     print(fail);
     print(success || fail); // true
@@ -112,7 +111,7 @@ class _DataTypeState extends State<DataType> {
     print('--------——_MapType---------');
     // 初始化map
     // map初始化方式一
-    Map names = {'xiaoming':'小明','xiaohong':'小宏'};
+    Map names = {'xiaoming': '小明', 'xiaohong': '小宏'};
     print(names);
     // map初始化方式二
     Map ages = {};
@@ -136,21 +135,55 @@ class _DataTypeState extends State<DataType> {
 
     // 遍历3,返回一个数组
     // 我们想要字符串拼接的时候，如果需要调用方法则使用{}
-    for(var key in ages.keys){
+    for (var key in ages.keys) {
       print('$key ${ages[key]}');
     } // 根据key来遍历
 
     // keys,values,remove,containsKey
-    for(var value in ages.values){
+    for (var value in ages.values) {
       print('$value ${ages.values}');
     } // 根据value来遍历
 
     ages.remove('xiaoming');
     print(ages);
 
-    bool res =  ages.containsKey('xiaoming'); // false 因为xiaoming被删除所以false
+    bool res = ages.containsKey('xiaoming'); // false 因为xiaoming被删除所以false
     bool res1 = ages.containsKey('xiaohong'); // true
     print('$res $res1');
+  }
 
+  /// 小知识: dynamic、var、Object三者区别
+  /// dynamic: 是所有Dart对象的基础类型，在大多数情况下，通常不直接使用它
+  /// 通过它定义的变量会关闭类型检查，这意味这 dynamic x = 'hello'; x.foo()方法
+  /// 这段代码静态类型检查不会报错，但是运行会crash，因为x并没有foo()方法
+  ///
+  /// var: 是一个关键字，意思是"我不关心这里的类型是什么"，系统会自动推断类型runtimeType;而且将这个变量更改为其他的值的时候报错。
+  /// var关键字定义就不可以再改变类型。
+  ///
+  /// Object： 是Dart对象的基类，当你定义： Object o = xxx；这个时候系统会认为o是个对象，你可以调用Object定义的方法。
+  /// 因为Object提供了这些方法，但是如果你尝试调用o.foo()时，静态类型检查会进行报错
+  /// 综上不难看出 dynamic 与 Object的最大区别是在静态类型检查上
+  _tips() {
+    print('--------——_MapType---------');
+    /// dynamic
+    dynamic x = 'hello';
+    print(x.runtimeType); // String
+    print(x); // hello
+
+    x = 123;
+    print(x.runtimeType); // int
+    print(x); // 123
+
+    /// var
+    var a = 'hello';
+    print(a.runtimeType); // String
+    print(a); // hello
+
+    // a = 123; var定义以后，不可更改数据类型 value of type 'int' can't be assigned to a variable of type 'String'.
+
+    /// Object
+    Object o1 = '111';
+    print(o1.runtimeType);
+    print(o1);
   }
 }
