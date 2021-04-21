@@ -13,6 +13,7 @@ class _DataTypeState extends State<DataType> {
     _stringType();
     _boolType();
     _listType();
+    _mapType();
     return Container(
       child: Text('常用数据类型，请查看控制台输出'),
     );
@@ -68,7 +69,7 @@ class _DataTypeState extends State<DataType> {
     // 初始化方式一
     List list = [1, 2, 3, 4, '集合']; // 初始化集合并添加元素
     print(list);
-    List<int> list2 = [];
+    // List<int> list2 = [];
     // list2 = list1; // 这里会报错，因为list1没有定义泛型
 
     // 初始化集合方式二
@@ -103,5 +104,53 @@ class _DataTypeState extends State<DataType> {
     print(newList);
     int index = list.indexOf(4);
     print(index);
+  }
+
+  /// map数据类型
+  /// map是key和value的相关联对象,key和value都可以是任何类型的对象，并且key是唯一的，如果key是重复的那么后面的key覆盖前面的内容
+  _mapType() {
+    print('--------——_MapType---------');
+    // 初始化map
+    // map初始化方式一
+    Map names = {'xiaoming':'小明','xiaohong':'小宏'};
+    print(names);
+    // map初始化方式二
+    Map ages = {};
+    ages['xiaoming'] = 16;
+    ages['xiaohong'] = 18;
+    print(ages);
+
+    // Map遍历
+
+    // 遍历1
+    ages.forEach((key, value) {
+      print('$key,$value');
+    });
+
+    // 遍历2
+    // Map ages2 = ages.map((key,value) {
+    //   // 迭代生成一个新Map，意味着map有返回值
+    //   return MapEntry(value,key);
+    // });
+    // print(ages2);
+
+    // 遍历3,返回一个数组
+    // 我们想要字符串拼接的时候，如果需要调用方法则使用{}
+    for(var key in ages.keys){
+      print('$key ${ages[key]}');
+    } // 根据key来遍历
+
+    // keys,values,remove,containsKey
+    for(var value in ages.values){
+      print('$value ${ages.values}');
+    } // 根据value来遍历
+
+    ages.remove('xiaoming');
+    print(ages);
+
+    bool res =  ages.containsKey('xiaoming'); // false 因为xiaoming被删除所以false
+    bool res1 = ages.containsKey('xiaohong'); // true
+    print('$res $res1');
+
   }
 }
