@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// 常用数据类型
+/// 常用数据类型
 class DataType extends StatefulWidget {
   @override
   _DataTypeState createState() => _DataTypeState();
@@ -12,12 +12,13 @@ class _DataTypeState extends State<DataType> {
     _numType();
     _stringType();
     _boolType();
+    _listType();
     return Container(
       child: Text('常用数据类型，请查看控制台输出'),
     );
   }
 
-  // 数字类型
+  /// 数字类型
   void _numType() {
     num num1 = -1.0; // 是数字类型的父类 ， 可以接受浮点类型和整型
     num num2 = 2; // 是数字类型的父类
@@ -31,9 +32,10 @@ class _DataTypeState extends State<DataType> {
     print(num1.toDouble()); // 转换成double
   }
 
-  // 字符串
+  /// 字符串
   _stringType() {
-    String str1 = '字符串', str2 = "双引号"; // 字符串的定义
+    String str1 = '字符串',
+        str2 = "双引号"; // 字符串的定义
     String str3 = 'str:$str1 str:$str2'; // 字符串拼接
     String str4 = 'str1:' + str1 + 'str2:' + str2; // 用 + 号进行字符串拼接
     String str5 = '常用数据类型，常用请看控,制台输出';
@@ -49,13 +51,57 @@ class _DataTypeState extends State<DataType> {
         .split(",")); // 在指定分隔符的匹配处拆分字符串并返回子字符串列表 flutter: [常用数据类型，常用请看控, 制台输出]
   }
 
-  // 布尔类型，Dart是 强 bool类型检查， 只有bool 类型的值是true 才被认为是true
+  /// 布尔类型，Dart是 强 bool类型检查， 只有bool 类型的值是true 才被认为是true
   _boolType() {
-    bool success = true, fail = false;
+    bool success = true,
+        fail = false;
     print(success);
     print(fail);
     print(success || fail); // true
     print(success && fail); // false
   }
 
+  /// List集合
+  _listType() {
+    print('--------——_listType----');
+    // 集合初始的方式 -> 集合是一个泛型
+    // 初始化方式一
+    List list = [1, 2, 3, 4, '集合']; // 初始化集合并添加元素
+    print(list);
+    List<int> list2 = [];
+    // list2 = list1; // 这里会报错，因为list1没有定义泛型
+
+    // 初始化集合方式二
+    List list3 = [];
+    list3.add('list3'); // 通过add方法添加元素
+    list3.addAll(list);
+    print(list3);
+
+    // 集合的生成函数
+    List list4 = List.generate(3, (index) => index * 2);
+    print(list4); // [0, 2, 4]
+
+    /// 集合的遍历方式
+    for (int i = 0; i < list.length; i++) {
+      print(list[i]);
+    }
+    for (var o in list) {
+      print(o);
+    }
+    list.forEach((val) {
+      print(val);
+    });
+
+    //list.removeXx,insert,sublist,indexf等
+    list.remove('集合');
+    print(list);
+    list.removeAt(2);
+    print(list);
+    list.insert(1, 'city');
+    print(list);
+    List newList = list.sublist(2); // 不改变原集合
+    print(newList);
+    int index = list.indexOf(4);
+    print(index);
+  }
 }
