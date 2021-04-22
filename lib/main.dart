@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dart_learn/dart_base/dart_base.dart';
+import 'package:flutter_dart_learn/dart_base.dart';
+import 'package:flutter_dart_learn/data_type.dart';
 
 void main() {
   runApp(MyApp());
