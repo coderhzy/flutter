@@ -11,13 +11,14 @@ class _DataState extends State<Data> {
     // methods写在这里
     _dataMent();
     _funcDefined();
+    _asyncStep();
     return Container(
       child: Text("Dart基础学习"),
     );
   }
 
   /// 变量声明
-  _dataMent() {
+  void _dataMent() {
     /// var 一旦声明，类型便会确定，不能再改变
     var t;
     t = 'h1 world';
@@ -83,29 +84,118 @@ class _DataState extends State<Data> {
     say('hi world');
 
     // 2.2 函数作为参数传递
-    void execute(var callback){
+    void execute(var callback) {
       callback();
     }
+
     execute(() => print('xxx'));
 
     // 2.3 可选位置参数 []
-    String say1(String name,int age,[String city]) {
+    String say1(String name, int age, [String city]) {
       var result = '$name 今年 $age';
-      if(city != null){
+      if (city != null) {
         result = '$name 今年 $age  住在 $city';
       }
       print(result);
       return result;
     }
-    say1('hzy',21); // hzy 今年 21
-    say1('hzy',21,'南京'); // hzy 今年 21  住在 南京
+
+    say1('hzy', 21); // hzy 今年 21
+    say1('hzy', 21, '南京'); // hzy 今年 21  住在 南京
 
     // 2.4 可选命名参数 {param1,param2,...}
-    void enableFlags({bool bold,bool hidden}){
+    void enableFlags({bool bold, bool hidden}) {
       /// .....
     }
     // 调用函数时，可以指定命名参数
-    enableFlags(bold: true,hidden: false);
+    enableFlags(bold: true, hidden: false);
+  }
+
+  /// 异步支持
+  _asyncStep() {
+    print('__________________asyncStep________________');
+    // 主要是Future & async/await
+    // 1.Future.then
+    // 主要场景: 真正的耗时任务，比如一次网络请求
+    Future.delayed(new Duration(seconds: 0), () {
+      return 'hi world';
+    }).then((data) => {print(data)});
+
+    // 2. Future.catchError
+    // 主要场景: 捕获错误
+    Future.delayed(new Duration(seconds: 0), () {
+      throw AssertionError("Error");
+    })
+        .then((data) => {
+              // 执行成果会走这里
+              print('success')
+            })
+        .catchError((e) => {
+              // 执行失败会走到这里
+              print(e)
+            });
+
+    // 3. then中的捕获错误,onError
+    // 主要场景: 在then的第二个参数使用onError捕获错误
+    Future.delayed(new Duration(seconds: 0), () {
+      throw AssertionError('Error');
+    }).then((data) => {print('success')}, onError: (e) {
+      print(e);
+    });
+
+    // 4. Future.whenComplete
+    // 主要场景: 无论异步任务执行成功或者失败都需要做一些事情的场景
+    Future.delayed(new Duration(seconds: 0), () {
+      throw AssertionError('Error');
+    })
+        .then((data) => {print(data)})
+        .catchError((e) => {print(e)})
+        .whenComplete(() => {
+              // 无论成功还是失败都会走这里
+            });
+
+    // 5.Future await
+    // 主要场景: 有些时候，我们需要等待多个异步任务都执行结束后才进行一些操作。
+    // 比如我们又一个界面，需要先分别从两个网络接口处获取数据，获取成功后，我们需要将两个接口数据进行特定的处理后再显示到UI上。
+    Future.wait([
+      // 2秒后返回结果
+      Future.delayed(new Duration(seconds: 0), () {
+        return "hello";
+      }),
+
+      Future.delayed(new Duration(seconds: 0), () {
+        return 'world';
+      }),
+    ])
+        .then((results) => {print(results[0] + results[1])})
+        .catchError((e) => {print(e)});
+
+    /// callback hell
+    // 主要场景: 如果代码中存在大量异步逻辑，并且出现大量异步任务依赖其他异步任务的结果时，必然会出现Future.then回调中套回调的情况。
+    // 1. 使用Future消除回调地狱
+    // login('alice','xxxxxxxxxx').then(() => {
+    //   return getUserInfo(id)
+    // }).then((userInfo) => {
+    //   return saveUserInfo(userInfo)
+    // }).then((e) => {
+    //   // 执行接下来的操作
+    // }).catchError((e) => {
+    //   // 错误处理
+    //   print(e);
+    // });
+
+    // 2. async/await
+    // task() async {
+    //   try{
+    //     String id = await login('alice',"xxxxxx");
+    //     String userInfo = await getUserInfo(id);
+    //     await saveUserInfo(userInfo);
+    //     // 执行接下来的操作
+    //   } catch(e) {
+    //     // 错误处理
+    //     print(e);
+    //   }
+    // }
 
   }
 }
