@@ -197,5 +197,30 @@ class _DataState extends State<Data> {
     //   }
     // }
 
+    /// Stream
+    // Stream也可以用于接收异步事件数据，与Future不同的时候，他可以接受多个异步操作对的结果。
+    // 也就是说，在执行异步任务时，可以通过多次触发成功或失败事件来传递结果数据或错误异常。
+    // Stream常用语需要多次读取数据的异步任务的场景，如网络内容下载，文件读写等
+    Stream.fromFutures([
+      Future.delayed(new Duration(seconds: 1), () {
+        // 一秒后返回结果
+        return 'hello 1';
+      }),
+      Future.delayed(new Duration(seconds: 2), () {
+        // 抛出一个异常
+        throw AssertionError("Error");
+      }),
+      Future.delayed(new Duration(seconds: 3), () {
+        // 3秒后返回结果
+        return 'hello 3';
+      })
+    ]).listen((data) => {print(data)},
+        onError: (e) => {print(e.message)}, onDone: () => {});
+
+
+
+    /// 彩蛋：关于Dart与java和JavaScript对比
+    /// Dart对比java： Dart VM在内存回收和吞吐量都进行了反复的优化，Dart在Flutter中GC可以达到10ms以内。不足点： Dart生态
+    /// Dart对比JavaScript： Dart在2.0版本强制开启了类型检查，原先的检查模式和可选类型将淡出。
   }
 }
