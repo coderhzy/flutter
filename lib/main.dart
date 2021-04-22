@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:english_words/english_words.dart';
+import 'package:first_flutter_app/ziyuan.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // 应用名称
       title: 'Flutter Demo',
-      initialRoute: '/', // 应用初始路由
+      initialRoute: '/',
+      // 应用初始路由
       theme: ThemeData(
         // 蓝色主题
         primarySwatch: Colors.blue,
@@ -20,19 +23,20 @@ class MyApp extends StatelessWidget {
       /// 路由表注册
       routes: {
         "new_page": (context) => NewRoute(),
-        "/":(context) => MyHomePage(title: 'Flutter Demo Home Page'), // 首页路由
+        "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'), // 首页路由
         "new_page1": (context) => EchoRoute(),
-        "tip2": (context){
+        "tip2": (context) {
           return TipRoute(text: ModalRoute.of(context).settings.arguments);
-        }
+        },
+        "ziyuan":(context) => ziYuanJiaZai()
       },
-      onGenerateRoute: (RouteSettings settings){
-        return MaterialPageRoute(builder: (context){
-          String routeName = settings.name;
-          // 如果访问的路由页需要登录，但当前未登录，则直接返回登录页路由
-          // 引导用户登录没其他情况下则是正常打开路由
-        });
-      },
+      // onGenerateRoute: (RouteSettings settings) {
+      //   return MaterialPageRoute(builder: (context) {
+      //     String routeName = settings.name;
+      //     // 如果访问的路由页需要登录，但当前未登录，则直接返回登录页路由
+      //     // 引导用户登录没其他情况下则是正常打开路由
+      //   });
+      // },
       // 应用首页路由
       // home: MyHomePage(title: 'First Flutter app'),
     );
@@ -69,15 +73,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            RandomWordsWidget(),
             Text(
               'You have pushed the button this many times:',
             ),
             Text(
               '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline4,
+              style: Theme.of(context).textTheme.headline4,
             ),
             TextButton(
               child: Text("open new route"),
@@ -92,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
               // },
 
               // 命名路由
-              onPressed: (){
+              onPressed: () {
                 Navigator.pushNamed(context, 'new_page');
               },
             ),
@@ -113,10 +115,19 @@ class _MyHomePageState extends State<MyHomePage> {
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
               ),
-              onPressed: (){
-                Navigator.of(context).pushNamed('new_page1',arguments: 'hi');
+              onPressed: () {
+                Navigator.of(context).pushNamed('new_page1', arguments: 'hi');
               },
-            )
+            ),
+            TextButton(
+              child: Text("资源加载"),
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed('ziyuan');
+              },
+            ),
           ],
         ),
       ),
@@ -191,9 +202,10 @@ class RouterTestRoute extends StatelessWidget {
         //   // 输出TipRoute路由返回结果
         //   print("路由返回值： $result");
         // },
-        
+
         onPressed: () async {
-          var result = Navigator.of(context).pushNamed('tip2',arguments: '我是提示金贝');
+          var result =
+              Navigator.of(context).pushNamed('tip2', arguments: '我是提示金贝');
         },
         child: Text("打开提示页"),
       ),
@@ -204,7 +216,7 @@ class RouterTestRoute extends StatelessWidget {
 /// 命名路由传值
 class EchoRoute extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     var args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
@@ -218,3 +230,38 @@ class EchoRoute extends StatelessWidget {
     // ....省略无关代码
   }
 }
+
+/// english_words包来生成随机字符串
+class RandomWordsWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // 生成随机字符串
+    final wordPair = new WordPair.random();
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: new Text(wordPair.toString()),
+    );
+  }
+}
+
+/// 资源加载
+class ziYuanJiaZai extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('hello'),
+        ),
+        body: Center(
+          child: ListView(
+            children: <Widget>[
+              ziYuan()
+            ],
+          ),
+        )
+    );
+  }
+}
+
+
+
