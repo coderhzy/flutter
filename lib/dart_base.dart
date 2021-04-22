@@ -9,14 +9,15 @@ class _DataState extends State<Data> {
   @override
   Widget build(BuildContext context) {
     // methods写在这里
-    _DataMent();
+    _dataMent();
+    _funcDefined();
     return Container(
       child: Text("Dart基础学习"),
     );
   }
 
   /// 变量声明
-  _DataMent() {
+  _dataMent() {
     /// var 一旦声明，类型便会确定，不能再改变
     var t;
     t = 'h1 world';
@@ -55,5 +56,56 @@ class _DataState extends State<Data> {
     const str1 = 'hello world1';
     // const String stt1 = 'hello world1'
     print('$str,$str1');
+  }
+
+  /// 函数
+  void _funcDefined() {
+    //  Dart是一种真正的面向对象语言，所以函数即对象，这意味着函数可以赋值给变量或作为参数传递给其他函数。
+    //   bool isNoble(int atomicNumber){
+    //     return _nobleGases[ atomicNumber ] != null;
+    //   }
+
+    // 1. 不指定返回类型，此时默认为dynamic，而是bool
+    // isNoble(int atomicNumber){
+    //   return _nobleGases[ atomicNumber ] != null;
+    // }
+    // void test(CALLBACK cb){
+    //   print(cb());
+    // }
+    // 报错，isNobel不是bool对象
+
+    // 2. 函数只包含一个表达式的函数，可以使用简写语法。
+    // bool isNoble(int atomicNumber) => _nobleGases[ atomicNumber ] != null;
+    // 2.1 函数作为变量
+    var say = (str) {
+      print(str);
+    };
+    say('hi world');
+
+    // 2.2 函数作为参数传递
+    void execute(var callback){
+      callback();
+    }
+    execute(() => print('xxx'));
+
+    // 2.3 可选位置参数 []
+    String say1(String name,int age,[String city]) {
+      var result = '$name 今年 $age';
+      if(city != null){
+        result = '$name 今年 $age  住在 $city';
+      }
+      print(result);
+      return result;
+    }
+    say1('hzy',21); // hzy 今年 21
+    say1('hzy',21,'南京'); // hzy 今年 21  住在 南京
+
+    // 2.4 可选命名参数 {param1,param2,...}
+    void enableFlags({bool bold,bool hidden}){
+      /// .....
+    }
+    // 调用函数时，可以指定命名参数
+    enableFlags(bold: true,hidden: false);
+
   }
 }
