@@ -10,16 +10,21 @@ class ziYuan extends StatefulWidget {
 class _ziYuanState extends State<ziYuan> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Container(
-        color: Colors.blue,
-        child: Text('资源加载'),
-      )
-    );
+    _assets();
+    return Container();
   }
 
 
-  Future<String> loadAsset() async {
-    return await rootBundle.loadString('assets/config.json');
+  _assets() async {
+    Future<String> loadAsset() async {
+      try {
+        return await rootBundle.loadString('./assets/config.json');
+      } catch (e) {
+        print(e);
+      }
+    }
+
+    String a = await loadAsset();
+    print(a);
   }
 }
