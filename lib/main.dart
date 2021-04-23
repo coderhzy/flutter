@@ -1,5 +1,6 @@
 import 'package:first_flutter_app/button.dart';
 import 'package:first_flutter_app/get_child_state.dart';
+import 'package:first_flutter_app/load_image.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_app/zi_yuan.dart';
 import 'package:first_flutter_app/random_english.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         'cupertinotestroute': (context) => CupertinoTestRoute(),
         'txtstyle': (context) => TextStyle1(),
         'button': (context) => Button(),
+        'LoadImage': (context) => LoadImage(),
       },
       // onGenerateRoute: (RouteSettings settings) {
       //   return MaterialPageRoute(builder: (context) {
@@ -212,6 +214,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       MaterialStateProperty.all<Color>(Colors.blue)),
               onPressed: () {
                 Navigator.of(context).pushNamed('button');
+              },
+            ),
+            TextButton(
+              child: Text('LoadImage'),
+              style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue)),
+              onPressed: () {
+                Navigator.of(context).pushNamed('LoadImage');
               },
             ),
           ],
