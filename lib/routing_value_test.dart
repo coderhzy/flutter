@@ -21,7 +21,6 @@ class RouterTestRoute extends StatelessWidget {
         // },
 
         onPressed: () async {
-          var result =
           Navigator.of(context).pushNamed('tip2', arguments: '我是提示金贝');
         },
         child: Text("打开提示页"),
