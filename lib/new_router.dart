@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 /// 新路由
 
-class newRouter extends StatefulWidget {
+class NewRouter extends StatefulWidget {
   @override
-  _newRouterState createState() => _newRouterState();
+  _NewRouterState createState() => _NewRouterState();
 }
 
-class _newRouterState extends State<newRouter> {
+class _NewRouterState extends State<NewRouter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
