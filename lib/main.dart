@@ -9,6 +9,7 @@ import 'package:first_flutter_app/route_name.dart';
 import 'package:first_flutter_app/state_less_widget.dart';
 import 'package:first_flutter_app/context.dart';
 import 'package:first_flutter_app/recrement_counter.dart';
+import 'package:first_flutter_app/cpuertion.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         'context': (context) => Context(),
         'counter': (context) => CounterWidget(),
         'getchildstate': (context) => GetChildState(),
+        'cupertinotestroute': (context) => CupertinoTestRoute(),
       },
       // onGenerateRoute: (RouteSettings settings) {
       //   return MaterialPageRoute(builder: (context) {
@@ -179,6 +181,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       MaterialStateProperty.all<Color>(Colors.blue)),
               onPressed: () {
                 Navigator.of(context).pushNamed('getchildstate');
+              },
+            ),
+            TextButton(
+              child: Text('cupertinotestroute'),
+              style: ButtonStyle(
+                  foregroundColor:
+                  MaterialStateProperty.all<Color>(Colors.blue)),
+              onPressed: () {
+                Navigator.of(context).pushNamed('cupertinotestroute');
               },
             ),
           ],
