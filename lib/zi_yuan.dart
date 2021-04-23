@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 
-class ziYuan extends StatefulWidget {
+class ZiYuan extends StatefulWidget {
   @override
-  _ziYuanState createState() => _ziYuanState();
+  _ZiYuanState createState() => _ZiYuanState();
 }
 
-class _ziYuanState extends State<ziYuan> {
+class _ZiYuanState extends State<ZiYuan> {
   @override
   Widget build(BuildContext context) {
     _assets();

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
 import 'package:first_flutter_app/zi_yuan.dart';
 import 'package:first_flutter_app/random_english.dart';
 import 'package:first_flutter_app/new_router.dart';
 import 'package:first_flutter_app/routing_value_tip.dart';
 import 'package:first_flutter_app/routing_value_test.dart';
 import 'package:first_flutter_app/route_name.dart';
-import 'package:first_flutter_app/zi_yuan.dart';
 import 'package:first_flutter_app/state_less_widget.dart';
 import 'package:first_flutter_app/context.dart';
+import 'package:first_flutter_app/recrement_counter.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
 
       /// 路由表注册
       routes: {
-        "new_page": (context) => newRouter(),
+        "new_page": (context) => NewRouter(),
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'), // 首页路由
         "new_page1": (context) => EchoRoute(),
         "tip2": (context) {
@@ -39,9 +39,10 @@ class MyApp extends StatelessWidget {
               .settings
               .arguments);
         },
-        "ziyuan": (context) => ziYuan(),
+        "ziyuan": (context) => ZiYuan(),
         "echo": (context) => Echo(text: ModalRoute.of(context).settings.arguments),
         'context': (context) => Context(),
+        'counter': (context) => CounterWidget(),
       },
       // onGenerateRoute: (RouteSettings settings) {
       //   return MaterialPageRoute(builder: (context) {
@@ -66,13 +67,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0; // 用于记录按钮点击次数
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  // int _counter = 0; // 用于记录按钮点击次数
+  //
+  // void _incrementCounter() {
+  //   setState(() {
+  //     _counter++;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -86,17 +87,17 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            random(),
+            Random(),
             Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .headline4,
-            ),
+            // Text(
+            //   '$_counter',
+            //   style: Theme
+            //       .of(context)
+            //       .textTheme
+            //       .headline4,
+            // ),
             TextButton(
               child: Text("open new route"),
               style: ButtonStyle(
@@ -162,14 +163,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.of(context).pushNamed('context');
               },
             ),
+            TextButton(
+              child: Text('counter'),
+              style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blue)
+              ),
+              onPressed: (){
+                Navigator.of(context).pushNamed('counter');
+              },
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter, // 自增方法,link line 35
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter, // 自增方法,link line 35
+      //   tooltip: 'Increment',
+      //   child: Icon(Icons.add),
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
