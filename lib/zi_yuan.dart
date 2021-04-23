@@ -10,25 +10,16 @@ class ziYuan extends StatefulWidget {
 class _ziYuanState extends State<ziYuan> {
   @override
   Widget build(BuildContext context) {
-    // _assets();
     return Container(
-      child: Text('资源管理'),
+      child: Container(
+        color: Colors.blue,
+        child: Text('资源加载'),
+      )
     );
   }
 
 
-  // TODO: flutter: Unable to load asset: ./assets/config.json
-  // _assets() {
-  //   Future<String> loadAsset() async {
-  //     try{
-  //       return await rootBundle.loadString('./assets/config.json');
-  //     }catch(e){
-  //       print(e);
-  //     }
-  //   }
-  //   loadAsset();
-  // }
-
-
-
+  Future<String> loadAsset() async {
+    return await rootBundle.loadString('assets/config.json');
+  }
 }
