@@ -1,3 +1,4 @@
+import 'package:first_flutter_app/get_child_state.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_app/zi_yuan.dart';
 import 'package:first_flutter_app/random_english.dart';
@@ -8,7 +9,6 @@ import 'package:first_flutter_app/route_name.dart';
 import 'package:first_flutter_app/state_less_widget.dart';
 import 'package:first_flutter_app/context.dart';
 import 'package:first_flutter_app/recrement_counter.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -34,15 +34,14 @@ class MyApp extends StatelessWidget {
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'), // 首页路由
         "new_page1": (context) => EchoRoute(),
         "tip2": (context) {
-          return TipRoute(text: ModalRoute
-              .of(context)
-              .settings
-              .arguments);
+          return TipRoute(text: ModalRoute.of(context).settings.arguments);
         },
         "ziyuan": (context) => ZiYuan(),
-        "echo": (context) => Echo(text: ModalRoute.of(context).settings.arguments),
+        "echo": (context) =>
+            Echo(text: ModalRoute.of(context).settings.arguments),
         'context': (context) => Context(),
         'counter': (context) => CounterWidget(),
+        'getchildstate': (context) => GetChildState(),
       },
       // onGenerateRoute: (RouteSettings settings) {
       //   return MaterialPageRoute(builder: (context) {
@@ -148,28 +147,38 @@ class _MyHomePageState extends State<MyHomePage> {
             TextButton(
               child: Text('echo'),
               style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue)
-              ),
-              onPressed: (){
-                Navigator.of(context).pushNamed('echo',arguments: 'helloChina');
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue)),
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed('echo', arguments: 'helloChina');
               },
             ),
             TextButton(
               child: Text('context'),
               style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blue)
-              ),
-              onPressed: (){
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue)),
+              onPressed: () {
                 Navigator.of(context).pushNamed('context');
               },
             ),
             TextButton(
               child: Text('counter'),
               style: ButtonStyle(
-                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blue)
-              ),
-              onPressed: (){
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue)),
+              onPressed: () {
                 Navigator.of(context).pushNamed('counter');
+              },
+            ),
+            TextButton(
+              child: Text('getchildstate'),
+              style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue)),
+              onPressed: () {
+                Navigator.of(context).pushNamed('getchildstate');
               },
             ),
           ],
