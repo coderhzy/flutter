@@ -74,6 +74,9 @@ flutter:
     - family: AbrilFatface
       fonts:
         - asset: assets/fonts/AbrilFatface-Regular.ttf
+    - family: myIcon
+      fonts:
+        - asset: assets/fonts/iconfont.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packasges
