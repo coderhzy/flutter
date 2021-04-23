@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-import 'package:first_flutter_app/ziyuan.dart';
+import 'package:first_flutter_app/zi_yuan.dart';
+import 'package:first_flutter_app/random_english.dart';
+import 'package:first_flutter_app/new_router.dart';
+import 'package:first_flutter_app/routing_value_tip.dart';
+import 'package:first_flutter_app/routing_value_test.dart';
+import 'package:first_flutter_app/route_name.dart';
+import 'package:first_flutter_app/zi_yuan.dart';
+import 'package:first_flutter_app/state_less_widget.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,13 +29,17 @@ class MyApp extends StatelessWidget {
 
       /// 路由表注册
       routes: {
-        "new_page": (context) => NewRoute(),
+        "new_page": (context) => newRouter(),
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'), // 首页路由
         "new_page1": (context) => EchoRoute(),
         "tip2": (context) {
-          return TipRoute(text: ModalRoute.of(context).settings.arguments);
+          return TipRoute(text: ModalRoute
+              .of(context)
+              .settings
+              .arguments);
         },
-        "ziyuan":(context) => ziYuanJiaZai()
+        "ziyuan": (context) => ziYuan(),
+        "echo": (context) => Echo(text: ModalRoute.of(context).settings.arguments,),
       },
       // onGenerateRoute: (RouteSettings settings) {
       //   return MaterialPageRoute(builder: (context) {
@@ -73,13 +84,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RandomWordsWidget(),
+            random(),
             Text(
               'You have pushed the button this many times:',
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .headline4,
             ),
             TextButton(
               child: Text("open new route"),
@@ -128,6 +142,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.of(context).pushNamed('ziyuan');
               },
             ),
+            TextButton(
+              child: Text('echo'),
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue)
+              ),
+              onPressed: (){
+                Navigator.of(context).pushNamed('echo',arguments: 'helloChina');
+              },
+            )
           ],
         ),
       ),
@@ -139,129 +162,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-/// 新路由
-class NewRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("new route"),
-      ),
-      body: Center(
-        child: Text("This is new route"),
-      ),
-    );
-  }
-}
-
-/// 路由传值
-class TipRoute extends StatelessWidget {
-  TipRoute({
-    Key key,
-    @required this.text, // 接受第一个text参数
-  }) : super(key: key);
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('提示'),
-      ),
-      body: Padding(
-          padding: EdgeInsets.all(18),
-          child: Center(
-            child: Column(
-              children: <Widget>[
-                Text(text),
-                ElevatedButton(
-                  onPressed: () => Navigator.pop(context, '我是返回值'),
-                  child: Text('返回'),
-                ),
-              ],
-            ),
-          )),
-    );
-  }
-}
-
-class RouterTestRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        // onPressed: () async {
-        //   // 打开TipRoute
-        //   var result = await Navigator.push(context,
-        //       MaterialPageRoute(builder: (context) {
-        //         return TipRoute(
-        //           // 路由参数
-        //             text: "我是提示xxx");
-        //       }));
-        //   // 输出TipRoute路由返回结果
-        //   print("路由返回值： $result");
-        // },
-
-        onPressed: () async {
-          var result =
-              Navigator.of(context).pushNamed('tip2', arguments: '我是提示金贝');
-        },
-        child: Text("打开提示页"),
-      ),
-    );
-  }
-}
-
-/// 命名路由传值
-class EchoRoute extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var args = ModalRoute.of(context).settings.arguments;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("命令路由"),
-      ),
-      body: Center(
-        child: Text(args),
-      ),
-    );
-    // 获取路由参数,RouteSetting
-    // ....省略无关代码
-  }
-}
-
-/// english_words包来生成随机字符串
-class RandomWordsWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // 生成随机字符串
-    final wordPair = new WordPair.random();
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: new Text(wordPair.toString()),
-    );
-  }
-}
-
-/// 资源加载
-class ziYuanJiaZai extends StatelessWidget{
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('hello'),
-        ),
-        body: Center(
-          child: ListView(
-            children: <Widget>[
-              ziYuan()
-            ],
-          ),
-        )
-    );
-  }
-}
-
-
-
