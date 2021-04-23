@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
 /// english_words包来生成随机字符串
-class random extends StatefulWidget {
+class Random extends StatefulWidget {
   @override
-  _randomState createState() => _randomState();
+  _RandomState createState() => _RandomState();
 }
 
-class _randomState extends State<random> {
+class _RandomState extends State<Random> {
   @override
   Widget build(BuildContext context) {
     // 生成随机字符串
