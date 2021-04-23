@@ -8,6 +8,7 @@ import 'package:first_flutter_app/routing_value_test.dart';
 import 'package:first_flutter_app/route_name.dart';
 import 'package:first_flutter_app/zi_yuan.dart';
 import 'package:first_flutter_app/state_less_widget.dart';
+import 'package:first_flutter_app/context.dart';
 
 void main() {
   runApp(MyApp());
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
               .arguments);
         },
         "ziyuan": (context) => ziYuan(),
-        "echo": (context) => Echo(text: ModalRoute.of(context).settings.arguments,),
+        "echo": (context) => Echo(text: ModalRoute.of(context).settings.arguments),
+        'context': (context) => Context(),
       },
       // onGenerateRoute: (RouteSettings settings) {
       //   return MaterialPageRoute(builder: (context) {
@@ -150,7 +152,16 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: (){
                 Navigator.of(context).pushNamed('echo',arguments: 'helloChina');
               },
-            )
+            ),
+            TextButton(
+              child: Text('context'),
+              style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.blue)
+              ),
+              onPressed: (){
+                Navigator.of(context).pushNamed('context');
+              },
+            ),
           ],
         ),
       ),
