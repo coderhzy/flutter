@@ -3,6 +3,7 @@ import 'package:first_flutter_app/get_child_state.dart';
 import 'package:first_flutter_app/icons.dart';
 import 'package:first_flutter_app/load_image.dart';
 import 'package:first_flutter_app/switch_checkbox.dart';
+import 'package:first_flutter_app/textfield_form.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter_app/zi_yuan.dart';
 import 'package:first_flutter_app/random_english.dart';
@@ -15,7 +16,6 @@ import 'package:first_flutter_app/context.dart';
 import 'package:first_flutter_app/recrement_counter.dart';
 import 'package:first_flutter_app/cpuertion.dart';
 import 'package:first_flutter_app/txt_style.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -55,6 +55,7 @@ class MyApp extends StatelessWidget {
         'LoadImage': (context) => LoadImage(),
         'Icons': (context) => Logo(),
         'switchCheckBox': (context) => SwitchAndCheckBoxTestRoute(),
+        'textfieldform': (context) => TextFieldForm()
       },
       // onGenerateRoute: (RouteSettings settings) {
       //   return MaterialPageRoute(builder: (context) {
@@ -238,13 +239,23 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.of(context).pushNamed('Icons');
               },
-            ),            TextButton(
+            ),
+            TextButton(
               child: Text('switchCheckBox'),
               style: ButtonStyle(
                   foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.blue)),
               onPressed: () {
                 Navigator.of(context).pushNamed('switchCheckBox');
+              },
+            ),
+            TextButton(
+              child: Text('textfieldform'),
+              style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue)),
+              onPressed: () {
+                Navigator.of(context).pushNamed('textfieldform');
               },
             ),
           ],
