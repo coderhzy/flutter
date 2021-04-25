@@ -89,3 +89,31 @@ class TranFormFour extends StatelessWidget{
     );
   }
 }
+
+
+class TranFormFive extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('test'),
+      ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          DecoratedBox(
+            decoration: BoxDecoration(color: Colors.red),
+            //将Transform.rotate换成RotatedBox
+            child: RotatedBox(
+              quarterTurns: 5, //旋转90度(1/4圈)
+              child: Text("Hello world"),
+            ),
+          ),
+          Text("你好", style: TextStyle(color: Colors.green, fontSize: 18.0),)
+        ],
+      ),
+    );
+  }
+}
+
+
