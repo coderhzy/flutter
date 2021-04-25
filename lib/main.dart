@@ -18,10 +18,13 @@ import 'pages/basics/textfield_form.dart';
 import 'pages/basics/txt_style.dart';
 import 'pages/basics/zi_yuan.dart';
 import 'pages/basics/form.dart';
+import 'pages/container/Container.dart';
 import 'pages/container/DecoratedBox.dart';
 import 'pages/container/constrainedBox.dart';
 import 'pages/container/padding.dart';
+import 'pages/container/padding_margin.dart';
 import 'pages/container/sizeBox.dart';
+import 'pages/container/tranform.dart';
 import 'pages/container/unconstrainedBox.dart';
 import 'pages/layout/align.dart';
 import 'pages/layout/center.dart';
@@ -87,7 +90,14 @@ class MyApp extends StatelessWidget {
         'ConstrainedBoxOne': (context) => ConstrainedBoxOne(),
         'SizedBoxOne': (context) => SizedBoxOne(),
         'UnconstrainedBoxOne': (context) => UnconstrainedBoxOne(),
-        'DecoratedBoxOne': (context) => DecoratedBoxOne()
+        'DecoratedBoxOne': (context) => DecoratedBoxOne(),
+        'TranForm': (context) => TranForm(),
+        'TranFormTwo': (context) => TranFormTwo(),
+        'TranFormThree': (context) => TranFormThree(),
+        'TranFormFour': (context) => TranFormFour(),
+        'TranFormFive': (context) => TranFormFive(),
+        'ContainerOne': (context) => ContainerOne(),
+        'PaddingMargin': (context) => PaddingMargin(),
         // 'RowCol1': (context) => RowCol1(),
       },
       // onGenerateRoute: (RouteSettings settings) {
@@ -463,6 +473,69 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.blue)),
                 onPressed: () {
                   Navigator.of(context).pushNamed('DecoratedBoxOne');
+                },
+              ),
+              TextButton(
+                child: Text('TranForm'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('TranForm');
+                },
+              ),
+              TextButton(
+                child: Text('TranFormTwo'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('TranFormTwo');
+                },
+              ),
+              TextButton(
+                child: Text('TranFormThree'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('TranFormThree');
+                },
+              ),
+              TextButton(
+                child: Text('TranFormFour'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('TranFormFour');
+                },
+              ),
+              TextButton(
+                child: Text('TranFormFive'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('TranFormFive');
+                },
+              ),
+              TextButton(
+                child: Text('ContainerOne'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('ContainerOne');
+                },
+              ),
+              TextButton(
+                child: Text('PaddingMargin'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('PaddingMargin');
                 },
               ),
             ],
