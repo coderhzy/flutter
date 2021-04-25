@@ -20,6 +20,8 @@ import 'pages/basics/zi_yuan.dart';
 import 'pages/basics/form.dart';
 import 'pages/container/constrainedBox.dart';
 import 'pages/container/padding.dart';
+import 'pages/container/sizeBox.dart';
+import 'pages/container/unconstrainedBox.dart';
 import 'pages/layout/align.dart';
 import 'pages/layout/center.dart';
 import 'pages/layout/flex.dart';
@@ -82,6 +84,8 @@ class MyApp extends StatelessWidget {
         'Factor': (context) => Factor(),
         'PaddingOne': (context) => PaddingOne(),
         'ConstrainedBoxOne': (context) => ConstrainedBoxOne(),
+        'SizedBoxOne': (context) => SizedBoxOne(),
+        'UnconstrainedBoxOne': (context) => UnconstrainedBoxOne()
         // 'RowCol1': (context) => RowCol1(),
       },
       // onGenerateRoute: (RouteSettings settings) {
@@ -430,6 +434,24 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.blue)),
                 onPressed: () {
                   Navigator.of(context).pushNamed('ConstrainedBoxOne');
+                },
+              ),
+              TextButton(
+                child: Text('SizedBoxOne'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('SizedBoxOne');
+                },
+              ),
+              TextButton(
+                child: Text('UnconstrainedBoxOne'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('UnconstrainedBoxOne');
                 },
               ),
             ],
