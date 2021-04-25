@@ -18,6 +18,7 @@ import 'pages/basics/textfield_form.dart';
 import 'pages/basics/txt_style.dart';
 import 'pages/basics/zi_yuan.dart';
 import 'pages/basics/form.dart';
+import 'pages/layout/align.dart';
 import 'pages/layout/flex.dart';
 import 'pages/layout/row_column.dart';
 import 'pages/layout/stack.dart';
@@ -71,6 +72,10 @@ class MyApp extends StatelessWidget {
         'WrapOne': (context) => WrapOne(),
         'StackOne': (context) => StackOne(),
         'StackTwo': (context) => StackTwo(),
+        'AlignOne': (context) => AlignOne(),
+        'AlignTwo': (context) => AlignTwo(),
+        'AlignThree': (context) => AlignThree(),
+        'AlignFour': (context) => AlignFour(),
         // 'RowCol1': (context) => RowCol1(),
       },
       // onGenerateRoute: (RouteSettings settings) {
@@ -356,6 +361,42 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.blue)),
                 onPressed: () {
                   Navigator.of(context).pushNamed('StackTwo');
+                },
+              ),
+              TextButton(
+                child: Text('AlignOne'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('AlignOne');
+                },
+              ),
+              TextButton(
+                child: Text('AlignTwo'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('AlignTwo');
+                },
+              ),
+              TextButton(
+                child: Text('AlignThree'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('AlignThree');
+                },
+              ),
+              TextButton(
+                child: Text('AlignFour'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('AlignFour');
                 },
               ),
             ],
