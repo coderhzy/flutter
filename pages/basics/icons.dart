@@ -1,5 +1,7 @@
-import 'package:first_flutter_app/inconfont.dart';
+
 import 'package:flutter/material.dart';
+
+import 'inconfont.dart';
 class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

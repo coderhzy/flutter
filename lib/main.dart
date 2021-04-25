@@ -1,21 +1,21 @@
-import 'package:first_flutter_app/button.dart';
-import 'package:first_flutter_app/get_child_state.dart';
-import 'package:first_flutter_app/icons.dart';
-import 'package:first_flutter_app/load_image.dart';
-import 'package:first_flutter_app/switch_checkbox.dart';
-import 'package:first_flutter_app/textfield_form.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/icons.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/get_child_state.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/cpuertion.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/context.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/button.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/load_image.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/new_router.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/random_english.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/recrement_counter.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/route_name.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/routing_value_test.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/routing_value_tip.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/state_less_widget.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/switch_checkbox.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/textfield_form.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/txt_style.dart';
+import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/zi_yuan.dart';
 import 'package:flutter/material.dart';
-import 'package:first_flutter_app/zi_yuan.dart';
-import 'package:first_flutter_app/random_english.dart';
-import 'package:first_flutter_app/new_router.dart';
-import 'package:first_flutter_app/routing_value_tip.dart';
-import 'package:first_flutter_app/routing_value_test.dart';
-import 'package:first_flutter_app/route_name.dart';
-import 'package:first_flutter_app/state_less_widget.dart';
-import 'package:first_flutter_app/context.dart';
-import 'package:first_flutter_app/recrement_counter.dart';
-import 'package:first_flutter_app/cpuertion.dart';
-import 'package:first_flutter_app/txt_style.dart';
 
 void main() {
   runApp(MyApp());
