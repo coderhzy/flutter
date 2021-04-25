@@ -1,21 +1,22 @@
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/icons.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/get_child_state.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/cpuertion.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/context.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/button.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/load_image.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/new_router.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/random_english.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/recrement_counter.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/route_name.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/routing_value_test.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/routing_value_tip.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/state_less_widget.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/switch_checkbox.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/textfield_form.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/txt_style.dart';
-import 'file:///Users/hzy/AndroidStudioProjects/first_flutter_app/pages/basics/zi_yuan.dart';
+import 'package:first_flutter_app/pages/basics/new_router.dart';
 import 'package:flutter/material.dart';
+import 'pages/basics/button.dart';
+import 'pages/basics/context.dart';
+import 'pages/basics/cpuertion.dart';
+import 'pages/basics/get_child_state.dart';
+import 'pages/basics/icons.dart';
+import 'pages/basics/load_image.dart';
+import 'pages/basics/random_english.dart';
+import 'pages/basics/recrement_counter.dart';
+import 'pages/basics/route_name.dart';
+import 'pages/basics/routing_value_test.dart';
+import 'pages/basics/routing_value_tip.dart';
+import 'pages/basics/state_less_widget.dart';
+import 'pages/basics/switch_checkbox.dart';
+import 'pages/basics/textfield_form.dart';
+import 'pages/basics/txt_style.dart';
+import 'pages/basics/zi_yuan.dart';
+import 'pages/basics/form.dart';
 
 void main() {
   runApp(MyApp());
@@ -55,7 +56,8 @@ class MyApp extends StatelessWidget {
         'LoadImage': (context) => LoadImage(),
         'Icons': (context) => Logo(),
         'switchCheckBox': (context) => SwitchAndCheckBoxTestRoute(),
-        'textfieldform': (context) => TextFieldForm()
+        'textfieldform': (context) => TextFieldForm(),
+        'form': (context) => TextFieldFormVal()
       },
       // onGenerateRoute: (RouteSettings settings) {
       //   return MaterialPageRoute(builder: (context) {
@@ -94,171 +96,184 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Random(),
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            // Text(
-            //   '$_counter',
-            //   style: Theme
-            //       .of(context)
-            //       .textTheme
-            //       .headline4,
-            // ),
-            TextButton(
-              child: Text("open new route"),
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+      body: SingleChildScrollView(
+        child: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Random(),
+              Text(
+                'You have pushed the button this many times:',
               ),
-              // onPressed: () {
-              //   // 导航到新路由
-              //   Navigator.push(context, MaterialPageRoute(builder: (context) {
-              //     return new NewRoute();
-              //   }));
-              // },
+              // Text(
+              //   '$_counter',
+              //   style: Theme
+              //       .of(context)
+              //       .textTheme
+              //       .headline4,
+              // ),
+              TextButton(
+                child: Text("open new route"),
+                style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                // onPressed: () {
+                //   // 导航到新路由
+                //   Navigator.push(context, MaterialPageRoute(builder: (context) {
+                //     return new NewRoute();
+                //   }));
+                // },
 
-              // 命名路由
-              onPressed: () {
-                Navigator.pushNamed(context, 'new_page');
-              },
-            ),
-            TextButton(
-              child: Text("open new route1"),
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                // 命名路由
+                onPressed: () {
+                  Navigator.pushNamed(context, 'new_page');
+                },
               ),
-              onPressed: () {
-                // 导航到新路由
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return RouterTestRoute();
-                }));
-              },
-            ),
-            TextButton(
-              child: Text("命名路由传值"),
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
+              TextButton(
+                child: Text("open new route1"),
+                style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                onPressed: () {
+                  // 导航到新路由
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return RouterTestRoute();
+                  }));
+                },
               ),
-              onPressed: () {
-                Navigator.of(context).pushNamed('new_page1', arguments: 'hi');
-              },
-            ),
-            TextButton(
-              child: Text("资源加载"),
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
+              TextButton(
+                child: Text("命名路由传值"),
+                style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('new_page1', arguments: 'hi');
+                },
               ),
-              onPressed: () {
-                Navigator.of(context).pushNamed('ziyuan');
-              },
-            ),
-            TextButton(
-              child: Text('echo'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context)
-                    .pushNamed('echo', arguments: 'helloChina');
-              },
-            ),
-            TextButton(
-              child: Text('context'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context).pushNamed('context');
-              },
-            ),
-            TextButton(
-              child: Text('counter'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context).pushNamed('counter');
-              },
-            ),
-            TextButton(
-              child: Text('getchildstate'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context).pushNamed('getchildstate');
-              },
-            ),
-            TextButton(
-              child: Text('cupertinotestroute'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context).pushNamed('cupertinotestroute');
-              },
-            ),
-            TextButton(
-              child: Text('txtstyle'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context).pushNamed('txtstyle');
-              },
-            ),
-            TextButton(
-              child: Text('button'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context).pushNamed('button');
-              },
-            ),
-            TextButton(
-              child: Text('LoadImage'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context).pushNamed('LoadImage');
-              },
-            ),
-            TextButton(
-              child: Text('Icons'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context).pushNamed('Icons');
-              },
-            ),
-            TextButton(
-              child: Text('switchCheckBox'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context).pushNamed('switchCheckBox');
-              },
-            ),
-            TextButton(
-              child: Text('textfieldform'),
-              style: ButtonStyle(
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
-              onPressed: () {
-                Navigator.of(context).pushNamed('textfieldform');
-              },
-            ),
-          ],
+              TextButton(
+                child: Text("资源加载"),
+                style: ButtonStyle(
+                  foregroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('ziyuan');
+                },
+              ),
+              TextButton(
+                child: Text('echo'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushNamed('echo', arguments: 'helloChina');
+                },
+              ),
+              TextButton(
+                child: Text('context'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('context');
+                },
+              ),
+              TextButton(
+                child: Text('counter'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('counter');
+                },
+              ),
+              TextButton(
+                child: Text('getchildstate'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('getchildstate');
+                },
+              ),
+              TextButton(
+                child: Text('cupertinotestroute'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('cupertinotestroute');
+                },
+              ),
+              TextButton(
+                child: Text('txtstyle'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('txtstyle');
+                },
+              ),
+              TextButton(
+                child: Text('button'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('button');
+                },
+              ),
+              TextButton(
+                child: Text('LoadImage'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('LoadImage');
+                },
+              ),
+              TextButton(
+                child: Text('Icons'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('Icons');
+                },
+              ),
+              TextButton(
+                child: Text('switchCheckBox'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('switchCheckBox');
+                },
+              ),
+              TextButton(
+                child: Text('textfieldform'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('textfieldform');
+                },
+              ),
+              TextButton(
+                child: Text('form'),
+                style: ButtonStyle(
+                    foregroundColor:
+                    MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('form');
+                },
+              ),
+            ],
+          ),
         ),
       ),
       // floatingActionButton: FloatingActionButton(
