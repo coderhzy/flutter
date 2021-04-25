@@ -6,6 +6,7 @@ import 'pages/basics/cpuertion.dart';
 import 'pages/basics/get_child_state.dart';
 import 'pages/basics/icons.dart';
 import 'pages/basics/load_image.dart';
+import 'pages/basics/progress.dart';
 import 'pages/basics/random_english.dart';
 import 'pages/basics/recrement_counter.dart';
 import 'pages/basics/route_name.dart';
@@ -17,6 +18,7 @@ import 'pages/basics/textfield_form.dart';
 import 'pages/basics/txt_style.dart';
 import 'pages/basics/zi_yuan.dart';
 import 'pages/basics/form.dart';
+import '';
 
 void main() {
   runApp(MyApp());
@@ -57,7 +59,9 @@ class MyApp extends StatelessWidget {
         'Icons': (context) => Logo(),
         'switchCheckBox': (context) => SwitchAndCheckBoxTestRoute(),
         'textfieldform': (context) => TextFieldForm(),
-        'form': (context) => TextFieldFormVal()
+        'form': (context) => TextFieldFormVal(),
+        'progress': (context) => Progress(),
+        'progress1': (context) => ProgressRoute(),
       },
       // onGenerateRoute: (RouteSettings settings) {
       //   return MaterialPageRoute(builder: (context) {
@@ -267,9 +271,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text('form'),
                 style: ButtonStyle(
                     foregroundColor:
-                    MaterialStateProperty.all<Color>(Colors.blue)),
+                        MaterialStateProperty.all<Color>(Colors.blue)),
                 onPressed: () {
                   Navigator.of(context).pushNamed('form');
+                },
+              ),
+              TextButton(
+                child: Text('progress'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('progress');
+                },
+              ),              TextButton(
+                child: Text('progress1'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('progress1');
                 },
               ),
             ],
