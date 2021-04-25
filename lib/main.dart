@@ -18,6 +18,7 @@ import 'pages/basics/textfield_form.dart';
 import 'pages/basics/txt_style.dart';
 import 'pages/basics/zi_yuan.dart';
 import 'pages/basics/form.dart';
+import 'pages/container/DecoratedBox.dart';
 import 'pages/container/constrainedBox.dart';
 import 'pages/container/padding.dart';
 import 'pages/container/sizeBox.dart';
@@ -85,7 +86,8 @@ class MyApp extends StatelessWidget {
         'PaddingOne': (context) => PaddingOne(),
         'ConstrainedBoxOne': (context) => ConstrainedBoxOne(),
         'SizedBoxOne': (context) => SizedBoxOne(),
-        'UnconstrainedBoxOne': (context) => UnconstrainedBoxOne()
+        'UnconstrainedBoxOne': (context) => UnconstrainedBoxOne(),
+        'DecoratedBoxOne': (context) => DecoratedBoxOne()
         // 'RowCol1': (context) => RowCol1(),
       },
       // onGenerateRoute: (RouteSettings settings) {
@@ -452,6 +454,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.blue)),
                 onPressed: () {
                   Navigator.of(context).pushNamed('UnconstrainedBoxOne');
+                },
+              ),
+              TextButton(
+                child: Text('DecoratedBoxOne'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('DecoratedBoxOne');
                 },
               ),
             ],
