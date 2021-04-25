@@ -20,6 +20,7 @@ import 'pages/basics/zi_yuan.dart';
 import 'pages/basics/form.dart';
 import 'pages/layout/flex.dart';
 import 'pages/layout/row_column.dart';
+import 'pages/layout/wrap.dart';
 
 void main() {
   runApp(MyApp());
@@ -66,6 +67,7 @@ class MyApp extends StatelessWidget {
         'RowColumn': (context) => RowColumn(),
         'Nesting': (context) => Nesting(),
         'FlexLayoutTestRoute': (context) => FlexLayoutTestRoute(),
+        'WrapOne': (context) => WrapOne(),
         // 'RowCol1': (context) => RowCol1(),
       },
       // onGenerateRoute: (RouteSettings settings) {
@@ -324,6 +326,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.blue)),
                 onPressed: () {
                   Navigator.of(context).pushNamed('FlexLayoutTestRoute');
+                },
+              ),              TextButton(
+                child: Text('WrapOne'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('WrapOne');
                 },
               ),
             ],
