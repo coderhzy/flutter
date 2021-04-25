@@ -19,6 +19,7 @@ import 'pages/basics/txt_style.dart';
 import 'pages/basics/zi_yuan.dart';
 import 'pages/basics/form.dart';
 import 'pages/layout/align.dart';
+import 'pages/layout/center.dart';
 import 'pages/layout/flex.dart';
 import 'pages/layout/row_column.dart';
 import 'pages/layout/stack.dart';
@@ -76,6 +77,7 @@ class MyApp extends StatelessWidget {
         'AlignTwo': (context) => AlignTwo(),
         'AlignThree': (context) => AlignThree(),
         'AlignFour': (context) => AlignFour(),
+        'Factor': (context) => Factor(),
         // 'RowCol1': (context) => RowCol1(),
       },
       // onGenerateRoute: (RouteSettings settings) {
@@ -397,6 +399,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.blue)),
                 onPressed: () {
                   Navigator.of(context).pushNamed('AlignFour');
+                },
+              ),
+              TextButton(
+                child: Text('Factor'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('Factor');
                 },
               ),
             ],
