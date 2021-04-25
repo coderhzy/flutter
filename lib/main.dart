@@ -20,6 +20,7 @@ import 'pages/basics/zi_yuan.dart';
 import 'pages/basics/form.dart';
 import 'pages/layout/flex.dart';
 import 'pages/layout/row_column.dart';
+import 'pages/layout/stack.dart';
 import 'pages/layout/wrap.dart';
 
 void main() {
@@ -68,6 +69,8 @@ class MyApp extends StatelessWidget {
         'Nesting': (context) => Nesting(),
         'FlexLayoutTestRoute': (context) => FlexLayoutTestRoute(),
         'WrapOne': (context) => WrapOne(),
+        'StackOne': (context) => StackOne(),
+        'StackTwo': (context) => StackTwo(),
         // 'RowCol1': (context) => RowCol1(),
       },
       // onGenerateRoute: (RouteSettings settings) {
@@ -327,13 +330,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.of(context).pushNamed('FlexLayoutTestRoute');
                 },
-              ),              TextButton(
+              ),
+              TextButton(
                 child: Text('WrapOne'),
                 style: ButtonStyle(
                     foregroundColor:
                         MaterialStateProperty.all<Color>(Colors.blue)),
                 onPressed: () {
                   Navigator.of(context).pushNamed('WrapOne');
+                },
+              ),
+              TextButton(
+                child: Text('StackOne'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('StackOne');
+                },
+              ),
+              TextButton(
+                child: Text('StackTwo'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('StackTwo');
                 },
               ),
             ],
