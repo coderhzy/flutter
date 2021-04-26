@@ -20,6 +20,7 @@ import 'pages/basics/zi_yuan.dart';
 import 'pages/basics/form.dart';
 import 'pages/container/Container.dart';
 import 'pages/container/DecoratedBox.dart';
+import 'pages/container/Scaffold.dart';
 import 'pages/container/constrainedBox.dart';
 import 'pages/container/padding.dart';
 import 'pages/container/padding_margin.dart';
@@ -98,6 +99,7 @@ class MyApp extends StatelessWidget {
         'TranFormFive': (context) => TranFormFive(),
         'ContainerOne': (context) => ContainerOne(),
         'PaddingMargin': (context) => PaddingMargin(),
+        'ScaffoldRoute': (context) => ScaffoldRoute(),
         // 'RowCol1': (context) => RowCol1(),
       },
       // onGenerateRoute: (RouteSettings settings) {
@@ -536,6 +538,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.blue)),
                 onPressed: () {
                   Navigator.of(context).pushNamed('PaddingMargin');
+                },
+              ),
+              TextButton(
+                child: Text('ScaffoldRoute'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('ScaffoldRoute');
                 },
               ),
             ],
