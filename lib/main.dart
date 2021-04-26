@@ -18,6 +18,7 @@ import 'pages/basics/textfield_form.dart';
 import 'pages/basics/txt_style.dart';
 import 'pages/basics/zi_yuan.dart';
 import 'pages/basics/form.dart';
+import 'pages/container/Clip.dart';
 import 'pages/container/Container.dart';
 import 'pages/container/DecoratedBox.dart';
 import 'pages/container/Scaffold.dart';
@@ -100,6 +101,7 @@ class MyApp extends StatelessWidget {
         'ContainerOne': (context) => ContainerOne(),
         'PaddingMargin': (context) => PaddingMargin(),
         'ScaffoldRoute': (context) => ScaffoldRoute(),
+        'ClipTestRoute': (context) => ClipTestRoute()
         // 'RowCol1': (context) => RowCol1(),
       },
       // onGenerateRoute: (RouteSettings settings) {
@@ -547,6 +549,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialStateProperty.all<Color>(Colors.blue)),
                 onPressed: () {
                   Navigator.of(context).pushNamed('ScaffoldRoute');
+                },
+              ),
+              TextButton(
+                child: Text('ClipTestRoute'),
+                style: ButtonStyle(
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue)),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('ClipTestRoute');
                 },
               ),
             ],
